@@ -17,7 +17,7 @@ class Store(models.Model):
     chain = models.ForeignKey(Chain)
     number = models.CharField(max_length=20)
     address = models.CharField(max_length=1000)
-    opening_date = models.DateTimeField(default=timezone.now())
+    opening_date = models.DateTimeField(default=timezone.now)
 
     # Business Hours
     business_hours_start = models.IntegerField(
