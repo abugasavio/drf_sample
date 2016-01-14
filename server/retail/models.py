@@ -20,3 +20,26 @@ class Store(models.Model):
     opening_date = models.DateTimeField(default=timezone.now())
 
     # Business Hours
+    business_hours_start = models.IntegerField(
+        default=8,
+        validators=[
+            MinValueValidator(0),
+            MaxValueValidator(23)
+        ]
+    )
+    business_hours_end = models.IntegerField(
+        default=17,
+        validators=[
+            MinValueValidator(0),
+            MaxValueValidator(23)
+        ]
+    )
+
+
+class Employee(models.Model):
+    """ Location employee model.  Foreign key to Store."""
+    store = models.ForeignKey(Store)
+    number = models.CharField(max_length=20)
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    hired_date = models.DateTimeField(default=timezone.now)
